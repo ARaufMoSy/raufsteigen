@@ -1,202 +1,459 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Kit — @raufsteigen</title>
 <style>
-  @page { size: A4; margin: 0; }
+  @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap');
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body {
-    font-family: 'Arial', sans-serif;
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0a0a0a;
+    color: #111111;
     width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    background: #0D0D0D;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
   }
-  .page { display: flex; flex-direction: column; height: 100%; }
+
+  .page {
+    width: 100%;
+    max-width: 800px;
+    background: #FFFFFF;
+    position: relative;
+  }
+
+  .display {
+    font-family: 'Archivo Black', 'Helvetica Neue', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    line-height: 0.95;
+  }
+
+  .label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  /* THREE-STRIPE MOTIF */
+  .stripes {
+    display: flex;
+    height: 8px;
+  }
+  .stripes span { flex: 1; }
+  .stripes span:nth-child(1) { background: #111111; }
+  .stripes span:nth-child(2) { background: #111111; margin: 0 3px; }
+  .stripes span:nth-child(3) { background: #111111; }
 
   /* ===== HERO ===== */
   .hero {
-    height: 380px;
-    background: linear-gradient(135deg, #FF4E00 0%, #FF7A00 45%, #FFB800 100%);
-    position: relative;
-    padding: 42px 50px;
-    overflow: hidden;
+    background: #111111;
+    color: #FFFFFF;
+    padding: 50px 45px 40px 45px;
   }
-  .hero::after {
-    content: "";
-    position: absolute;
-    right: -80px; top: -80px;
-    width: 300px; height: 300px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.12);
-  }
-  .kicker { color: rgba(13,13,13,0.75); font-weight: 800; letter-spacing: 4px; font-size: 13px; margin-bottom: 14px; }
-  .handle { font-size: 62px; font-weight: 900; color: #0D0D0D; line-height: 0.95; letter-spacing: -1px; }
-  .tagline { margin-top: 14px; font-size: 18px; font-weight: 700; color: #1a1a1a; max-width: 500px; line-height: 1.4; }
-  .pill-row { margin-top: 20px; display: flex; gap: 10px; }
-  .pill { background: #0D0D0D; color: #FFB800; font-weight: 800; font-size: 12px; padding: 7px 16px; border-radius: 30px; }
 
-  /* ===== STATS STRIP ===== */
-  .stats { display: flex; background: #1A1A1A; padding: 26px 50px; }
-  .stat { flex: 1; text-align: center; border-right: 1px solid #333; }
+  .kicker {
+    font-size: 10px;
+    color: #FFFFFF;
+    opacity: 0.55;
+    margin-bottom: 14px;
+  }
+
+  .handle {
+    font-size: 58px;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+  }
+
+  .tagline {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #B8B8B8;
+    max-width: 540px;
+    line-height: 1.6;
+  }
+
+  .pill-row {
+    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .pill {
+    border: 1px solid #3a3a3a;
+    color: #FFFFFF;
+    font-size: 10px;
+    padding: 8px 14px;
+    letter-spacing: 2px;
+  }
+
+  /* ===== STATS ===== */
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    background: #FFFFFF;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  .stat {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    padding: 26px 10px;
+    border-right: 1px solid #eaeaea;
+  }
   .stat:last-child { border-right: none; }
-  .stat .num { font-size: 38px; font-weight: 900; color: #FFB800; line-height: 1; }
-  .stat .lbl { margin-top: 5px; font-size: 12px; font-weight: 700; color: #999; letter-spacing: 1.4px; text-transform: uppercase; }
+
+  .stat .num {
+    font-size: 40px;
+    color: #111111;
+  }
+
+  .stat .lbl {
+    font-size: 9px;
+    color: #888888;
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
 
   /* ===== BODY ===== */
-  .body { background: #FFFFFF; padding: 20px 50px 0 50px; flex: 1; }
+  .body {
+    padding: 42px 45px 0 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+  }
+
   .section-title {
-    font-size: 15px; font-weight: 900; letter-spacing: 1.5px; color: #0D0D0D;
-    display: flex; align-items: center; margin-bottom: 16px;
+    font-size: 22px;
+    color: #111111;
+    margin-bottom: 16px;
   }
-  .section-title .bar { width: 26px; height: 6px; background: #FF4E00; margin-right: 12px; border-radius: 3px; }
 
-  /* About + roadmap combined */
-  .about-block { display: flex; gap: 22px; margin-bottom: 32px; align-items: stretch; }
+  .about-block {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  @media (min-width: 650px) { .about-block { flex-direction: row; } }
+
   .about-text {
-    flex: 1.1; background: #F7F5F2; border-radius: 14px; padding: 22px 24px;
-    font-size: 14.5px; color: #333; line-height: 1.75;
+    flex: 1.1;
+    padding: 24px 0;
+    font-size: 13.5px;
+    color: #333333;
+    line-height: 1.75;
+    font-weight: 500;
   }
-  .about-text b { color: #FF4E00; }
-  .roadmap-box { flex: 1; background: #0D0D0D; border-radius: 14px; padding: 22px 24px; display: flex; flex-direction: column; justify-content: center; }
-  .roadmap-title { color: #FFB800; font-size: 12px; font-weight: 900; letter-spacing: 1px; margin-bottom: 18px; }
-  .roadmap { display: flex; justify-content: space-between; position: relative; }
-  .roadmap::before {
-    content: ""; position: absolute; top: 18px; left: 18px; right: 18px; height: 4px;
-    background: linear-gradient(90deg, #FF4E00, #FFB800); border-radius: 4px; z-index: 0;
-  }
-  .rm-step { position: relative; z-index: 1; text-align: center; width: 25%; }
-  .rm-dot {
-    width: 38px; height: 38px; border-radius: 50%; background: #1A1A1A; color: #FFB800;
-    display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900;
-    margin: 0 auto 8px auto; border: 3px solid #FF7A00;
-  }
-  .rm-step.done .rm-dot { background: #FF4E00; border-color: #FF4E00; color: #fff; }
-  .rm-year { font-weight: 900; font-size: 12px; color: #fff; }
-  .rm-label { font-size: 10.5px; color: #aaa; font-weight: 700; margin-top: 2px; }
 
-  /* Content pillars */
-  .pillars { display: flex; gap: 16px; margin-bottom: 32px; }
-  .pillar-card { flex: 1; background: #F7F5F2; border-radius: 12px; padding: 20px 16px; text-align: center; border-top: 5px solid #FF4E00; }
-  .pillar-card:nth-child(2) { border-top-color: #FF7A00; }
-  .pillar-card:nth-child(3) { border-top-color: #FFB800; }
-  .pillar-icon { font-size: 28px; margin-bottom: 8px; }
-  .pillar-title { font-weight: 900; font-size: 14px; color: #0D0D0D; margin-bottom: 6px; }
-  .pillar-desc { font-size: 12px; color: #666; line-height: 1.4; }
+  .about-text b { font-weight: 800; color: #111111; }
 
-  /* Offer + value */
-  .offer-row { display: flex; gap: 16px; margin-bottom: 32px; }
-  .offer-card { flex: 1; background: #0D0D0D; border-radius: 12px; padding: 22px 24px; color: #fff; }
-  .offer-card .ct { font-size: 13px; font-weight: 900; color: #FFB800; letter-spacing: 1px; margin-bottom: 12px; }
+  .roadmap-box {
+    flex: 1;
+    background: #111111;
+    padding: 26px 24px;
+    color: #FFFFFF;
+  }
+
+  .roadmap-title {
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+  }
+
+  .rm-step {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #262626;
+  }
+  .rm-step:last-child { border-bottom: none; }
+
+  .rm-step .yr { font-size: 12px; font-weight: 800; color: #FFFFFF; width: 40px; }
+  .rm-step .goal { font-size: 10.5px; color: #999999; letter-spacing: 1px; text-transform: uppercase; flex: 1; }
+  .rm-step.done .goal { color: #FFFFFF; }
+  .rm-step .check { font-size: 11px; color: #555555; }
+  .rm-step.done .check { color: #FFFFFF; }
+
+  /* metric callout */
+  .metric-box {
+    background: #F6F6F6;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-left: 4px solid #111111;
+  }
+  .metric-box .m-label { font-size: 11px; color: #555555; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .metric-box .m-value { font-size: 20px; color: #111111; font-family: 'Archivo Black', sans-serif; }
+
+  /* Content Pillars */
+  .pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: #eaeaea;
+  }
+  @media (min-width: 600px) { .pillars { flex-direction: row; } }
+
+  .pillar-card {
+    flex: 1;
+    background: #FFFFFF;
+    padding: 22px;
+  }
+
+  .pillar-title {
+    font-size: 17px;
+    color: #111111;
+    margin-bottom: 8px;
+  }
+
+  .pillar-desc {
+    font-size: 11.5px;
+    color: #555555;
+    font-weight: 500;
+    line-height: 1.55;
+  }
+
+  /* Collaboration Offers */
+  .offer-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  @media (min-width: 600px) { .offer-row { flex-direction: row; } }
+
+  .offer-card {
+    flex: 1;
+    background: #111111;
+    padding: 24px;
+    color: #FFFFFF;
+  }
+
+  .offer-card .ct {
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-bottom: 14px;
+  }
+
   .offer-card ul { list-style: none; }
-  .offer-card li { font-size: 13px; color: #ddd; line-height: 2; padding-left: 18px; position: relative; }
-  .offer-card li::before { content: "▸"; position: absolute; left: 0; color: #FF7A00; }
+  .offer-card li {
+    font-size: 11.5px;
+    color: #C9C9C9;
+    font-weight: 500;
+    line-height: 2;
+    position: relative;
+    padding-left: 16px;
+  }
+  .offer-card li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: #666666;
+  }
 
-  /* Rate card */
-  .rate-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+  /* Rates Table */
+  .rate-table { width: 100%; border-collapse: collapse; }
   .rate-table th {
-    text-align: left; font-size: 11.5px; letter-spacing: 1px; color: #999; font-weight: 800;
-    padding: 8px 14px; border-bottom: 2px solid #0D0D0D;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #888888;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 10px 10px 10px 0;
+    border-bottom: 2px solid #111111;
   }
-  .rate-table td { font-size: 14px; padding: 16px 14px; border-bottom: 1px solid #eee; color: #222; }
-  .rate-table tr:last-child td { border-bottom: none; }
-  .rate-table .price { font-weight: 900; color: #FF4E00; font-size: 16px; }
-  .rate-note { font-size: 12px; color: #888; margin-bottom: 30px; font-style: italic; }
+  .rate-table td {
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 16px 10px 16px 0;
+    border-bottom: 1px solid #EAEAEA;
+    color: #333333;
+  }
+  .rate-table .pkg { color: #111111; font-weight: 800; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; }
+  .rate-table .price { font-size: 22px; color: #111111; text-align: right; font-family: 'Archivo Black', sans-serif; }
 
-  /* Footer */
-  .footer {
-    background: linear-gradient(90deg, #FF4E00, #FFB800);
-    padding: 24px 50px; display: flex; justify-content: space-between; align-items: center;
+  .rate-note {
+    font-size: 10px;
+    color: #888888;
+    margin-top: 12px;
+    font-weight: 600;
   }
-  .footer .cta { font-weight: 900; font-size: 16px; color: #0D0D0D; }
-  .footer .contact { text-align: right; }
-  .footer .contact div { font-size: 13px; font-weight: 700; color: #0D0D0D; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: #111111;
+    color: #FFFFFF;
+    padding: 35px 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 42px;
+  }
+  @media (min-width: 500px) {
+    .footer { flex-direction: row; justify-content: space-between; align-items: center; }
+  }
+
+  .footer .cta { font-size: 24px; color: #FFFFFF; }
+  .footer .contact { text-align: left; }
+  @media (min-width: 500px) { .footer .contact { text-align: right; } }
+  .footer .contact div { font-size: 11px; font-weight: 700; color: #C9C9C9; letter-spacing: 1px; margin-top: 4px; }
+  .footer .contact div:first-child { color: #FFFFFF; font-weight: 800; }
 </style>
 </head>
 <body>
+
 <div class="page">
 
   <div class="hero">
-    <div class="kicker">MEDIA KIT</div>
-    <div class="handle">@raufsteigen</div>
-    <div class="tagline">Documenting an honest journey from first half marathon to full Ironman — one training block at a time.</div>
+    <div class="kicker label">Athlete &amp; Creator Media Kit</div>
+    <div class="handle display">@raufsteigen</div>
+    <div class="tagline">Documenting a self-coached build from first half marathon to full Ironman — training logs, honest numbers, and gear that actually holds up to a 48-week program.</div>
     <div class="pill-row">
-      <div class="pill">🏃 RUNNING</div>
-      <div class="pill">⛰️ HIKING</div>
-      <div class="pill">🚴 TRIATHLON</div>
+      <div class="pill label">Running</div>
+      <div class="pill label">Trail / Hiking</div>
+      <div class="pill label">Triathlon</div>
     </div>
   </div>
 
+  <div class="stripes"><span></span><span></span><span></span></div>
+
   <div class="stats">
-    <div class="stat"><div class="num">126</div><div class="lbl">Followers</div></div>
-    <div class="stat"><div class="num">11.3K</div><div class="lbl">30-Day Views</div></div>
-    <div class="stat"><div class="num">489</div><div class="lbl">Interactions</div></div>
+    <div class="stat">
+      <div class="num display">11.3K</div>
+      <div class="lbl label">30-Day Views</div>
+    </div>
+    <div class="stat">
+      <div class="num display">489</div>
+      <div class="lbl label">Interactions</div>
+    </div>
+    <div class="stat">
+      <div class="num display">126</div>
+      <div class="lbl label">Followers</div>
+    </div>
   </div>
 
   <div class="body">
 
     <div class="about-block">
       <div class="about-text">
-        I'm a beginner endurance creator sharing every stage of my training — no filters on the hard days. Just completed my <b>first half marathon</b>, and I'm now building toward the biggest goal of my life: a <b>full Ironman</b>. My audience is small but genuinely engaged, following along for real progress, not polished perfection.
+        I'm running a structured, self-tracked build toward a full Ironman — not a highlight reel, an actual periodized plan. Right now that means a <b>48-week VO2 max program</b> targeting <b>51+ ml/kg/min</b>, logged honestly, wins and bad weeks both. I'm also picking up cycling from scratch as part of the same build, which means the content covers real beginner mistakes, not polished expertise.
       </div>
       <div class="roadmap-box">
-        <div class="roadmap-title">THE ROAD TO IRONMAN</div>
-        <div class="roadmap">
-          <div class="rm-step done"><div class="rm-dot">✓</div><div class="rm-year">2026</div><div class="rm-label">Half Marathon</div></div>
-          <div class="rm-step"><div class="rm-dot">2</div><div class="rm-year">2027</div><div class="rm-label">Marathon</div></div>
-          <div class="rm-step"><div class="rm-dot">3</div><div class="rm-year">2028</div><div class="rm-label">70.3</div></div>
-          <div class="rm-step"><div class="rm-dot">4</div><div class="rm-year">2029</div><div class="rm-label">Ironman</div></div>
+        <div class="roadmap-title display">The Build</div>
+        <div class="rm-step done">
+          <div class="yr">2026</div>
+          <div class="goal">Half Marathon</div>
+          <div class="check">✓</div>
+        </div>
+        <div class="rm-step">
+          <div class="yr">2027</div>
+          <div class="goal">Marathon</div>
+          <div class="check">→</div>
+        </div>
+        <div class="rm-step">
+          <div class="yr">2028</div>
+          <div class="goal">Ironman 70.3</div>
+          <div class="check"></div>
+        </div>
+        <div class="rm-step">
+          <div class="yr">2029</div>
+          <div class="goal">Full Ironman</div>
+          <div class="check"></div>
         </div>
       </div>
     </div>
 
-    <div class="section-title"><span class="bar"></span>CONTENT PILLARS</div>
-    <div class="pillars">
-      <div class="pillar-card"><div class="pillar-icon">🏃</div><div class="pillar-title">Running</div><div class="pillar-desc">Training blocks &amp; race-day recaps</div></div>
-      <div class="pillar-card"><div class="pillar-icon">⛰️</div><div class="pillar-title">Hiking</div><div class="pillar-desc">Trail routes &amp; outdoor lifestyle</div></div>
-      <div class="pillar-card"><div class="pillar-icon">🚴</div><div class="pillar-title">Triathlon</div><div class="pillar-desc">Multisport training in progress</div></div>
+    <div class="metric-box">
+      <div class="m-label">Current Training Target</div>
+      <div class="m-value">VO2 Max &gt; 51 ml/kg/min</div>
+    </div>
+
+    <div>
+      <div class="section-title display">Content Pillars</div>
+      <div class="pillars">
+        <div class="pillar-card">
+          <div class="pillar-title display">Running</div>
+          <div class="pillar-desc">Training block updates, race prep, and gear tested through actual mileage.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-title display">Trail / Hiking</div>
+          <div class="pillar-desc">Route scouting and elevation work as cross-training for the endurance base.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-title display">Triathlon</div>
+          <div class="pillar-desc">Learning to cycle from zero — commuting, long rides, and the 70.3 build.</div>
+        </div>
+      </div>
     </div>
 
     <div class="offer-row">
       <div class="offer-card">
-        <div class="ct">HOW I COLLABORATE</div>
+        <div class="ct display">Why Partner Now</div>
         <ul>
-          <li>Paid feed posts &amp; Reels</li>
-          <li>Gifted / product-for-post</li>
-          <li>Long-term training-partner deals</li>
+          <li>Early-stage account, ground-floor rates</li>
+          <li>Multi-year narrative arc already mapped out</li>
+          <li>Engaged, endurance-focused audience</li>
         </ul>
       </div>
       <div class="offer-card">
-        <div class="ct">WHAT YOU GET</div>
+        <div class="ct display">What I Offer</div>
         <ul>
-          <li>Authentic use in real training sessions</li>
-          <li>Niche, high-intent endurance audience</li>
-          <li>Dedication and consistency for years to come</li>
+          <li>In-feed posts and short-form reels</li>
+          <li>Honest, first-person gear testing</li>
+          <li>Story mentions across the training cycle</li>
         </ul>
       </div>
     </div>
 
-    <div class="section-title"><span class="bar"></span>STARTER RATES</div>
-    <table class="rate-table">
-      <tr><th>Package</th><th>Includes</th><th>Price</th></tr>
-      <tr><td>Feed Post</td><td>1 in-feed photo/carousel post</td><td class="price">$50</td></tr>
-      <tr><td>Reel</td><td>1 short-form training/story Reel</td><td class="price">$90</td></tr>
-      <tr><td>Bundle</td><td>1 feed post + 1 Reel + 2 story mentions</td><td class="price">$150</td></tr>
-    </table>
-    <div class="rate-note">Gifted collaborations always welcome. Rates are starter pricing and open to discussion.</div>
-
-    <div class="section-title"><span class="bar"></span>HOW WE'D WORK TOGETHER</div>
-    <div class="pillars">
-      <div class="pillar-card"><div class="pillar-icon">💬</div><div class="pillar-title">1. Connect</div><div class="pillar-desc">Reach out with your brand &amp; goals</div></div>
-      <div class="pillar-card"><div class="pillar-icon">📋</div><div class="pillar-title">2. Plan</div><div class="pillar-desc">Simple brief, matched to a real session</div></div>
-      <div class="pillar-card"><div class="pillar-icon">📸</div><div class="pillar-title">3. Deliver</div><div class="pillar-desc">Content shot, shared &amp; sent for review</div></div>
+    <div>
+      <div class="section-title display">Starter Rates</div>
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th class="label">Package</th>
+            <th class="label">Deliverables</th>
+            <th class="label" style="text-align: right;">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pkg">Feed Post</td>
+            <td>1 in-feed photo or carousel</td>
+            <td class="price">$50</td>
+          </tr>
+          <tr>
+            <td class="pkg">Reel</td>
+            <td>1 short-form training reel</td>
+            <td class="price">$90</td>
+          </tr>
+          <tr>
+            <td class="pkg">Bundle</td>
+            <td>1 feed post + 1 reel + 2 story mentions</td>
+            <td class="price">$150</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="rate-note">Open to gifted collabs for gear I'd genuinely use in training.</div>
     </div>
 
   </div>
 
+  <div class="stripes" style="margin-top: 42px;"><span></span><span></span><span></span></div>
+
   <div class="footer">
-    <div class="cta">LET'S TRAIN TOGETHER →</div>
+    <div class="cta display">Let's Build This →</div>
     <div class="contact">
       <div>@raufsteigen</div>
       <div>syedabdul0007@gmail.com</div>
@@ -204,5 +461,6 @@
   </div>
 
 </div>
+
 </body>
 </html>
